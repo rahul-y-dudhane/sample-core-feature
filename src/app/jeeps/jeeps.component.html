@@ -1,0 +1,12 @@
+<ul>
+    <li *ngFor="let jeep of jeeps">
+        <span [routerLink]="[{ outlets: { infoOutlet: ['vehicle',jeep.id] } }]" routerLinkActive="Active">
+            <h4>
+            {{jeep.name }}
+
+          </h4>
+          </span>
+    </li>
+  
+  </ul>
+  

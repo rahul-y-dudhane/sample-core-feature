@@ -14,7 +14,7 @@ export class VehicleService{
     { id: 9, type:"car", name:"ciaz", desc:"You have selected ciaz"},
     { id: 10, type:"jeep", name:"Thar", desc:"You have selected Thar"},
     { id: 11, type:"jeep", name:"Scorpio", desc:"You have selected Scorpio"},
-    { id: 12, type:"jeep", name:"Fortuner", desc:"You have selected Fortuner"},
+    { id: 12, type:"jeep", name:"Fortuner", desc:"You have selected Fortuner for details"},
     
     ];
 

@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core'
+import { Vehicle } from '../vehicle';
+import { Observable , of } from 'rxjs';
 
 @Injectable()
 export class VehicleService{
 
-    vehicles = [{ id: 1, type:"bike", name:"Suzuki Hayate", desc:"You have selected Suzuki Hayate"},
+      vehicles : Vehicle[] = [{ id: 1, type:"bike", name:"Suzuki Hayate", desc:"You have selected Suzuki Hayate"},
     { id: 2, type:"bike", name:"Yamaha R15", desc:"You have selected Yamaha R15"},
     { id: 3, type:"bike", name:"KTM", desc:"You have selected KTM"},
     { id: 4, type:"scooty", name:"Mestro", desc:"You have selected Mestro"},
@@ -18,14 +20,10 @@ export class VehicleService{
     
     ];
 
-
-
-
-
-    getBikes() : any[] {
-        return this.vehicles.filter(item =>{
+    getBikes() : Observable<Vehicle[]> {
+        return of(this.vehicles.filter(item =>{
             return item.type == "bike";
-        })
+        }))
     }
 
     getCars() : any[] {
@@ -47,5 +45,17 @@ export class VehicleService{
             return this.vehicles.filter(item =>{
                 return item.id === id;
             })    }
+
+    registerVehicle(name:string , type: string, desc : string){
+        let id = this.vehicles.length + 1;
+        this.vehicles.push({ 
+            id : id,
+            type : type,
+            name : name,
+            desc : desc
+        });
+
+        console.log(this.vehicles);
+    }
 
 }

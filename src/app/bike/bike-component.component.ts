@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { VehicleService } from '../services/vehicle-list.service';
 
 @Component({
@@ -13,11 +13,15 @@ export class BikeComponentComponent implements OnInit {
   constructor( private vehicleService : VehicleService) { 
     
     console.log("Bike component");
-
-    this.bikes = vehicleService.getBikes();
+    this.vehicleService.getBikes().subscribe( data =>{
+      this.bikes = data;
+    });
+   
   }
 
   ngOnInit() {
+   
   }
+ 
 
 }

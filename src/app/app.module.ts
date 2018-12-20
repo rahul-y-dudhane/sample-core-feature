@@ -8,14 +8,17 @@ import {ReactiveFormsModule} from '@angular/forms'
  
 import { AppComponent } from './app.component';
 import { RegistervehicleComponent } from './registervehicle/registervehicle.component';
+import { AppRouterModule } from './app-router/app-router.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistervehicleComponent
+    RegistervehicleComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule,BrowserAnimationsModule,TwoWheelerModule, FourWheelModule,ReactiveFormsModule
+    BrowserModule,AppRouterModule, BrowserAnimationsModule,TwoWheelerModule, FourWheelModule,ReactiveFormsModule
   ],
   providers: [VehicleService],
   

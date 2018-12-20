@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core'
 import { Vehicle } from '../vehicle';
-import { Observable , of } from 'rxjs';
+import { Observable , of, from } from 'rxjs';
 
 @Injectable()
 export class VehicleService{
+
+        isChanged = true;
 
       vehicles : Vehicle[] = [{ id: 1, type:"bike", name:"Suzuki Hayate", desc:"You have selected Suzuki Hayate"},
     { id: 2, type:"bike", name:"Yamaha R15", desc:"You have selected Yamaha R15"},
@@ -19,11 +21,14 @@ export class VehicleService{
     { id: 12, type:"jeep", name:"Fortuner", desc:"You have selected Fortuner for details"},
     
     ];
+    
 
     getBikes() : Observable<Vehicle[]> {
-        return of(this.vehicles.filter(item =>{
-            return item.type == "bike";
-        }))
+
+            return of(this.vehicles.filter(item =>{
+                this.isChanged = false;
+                return item.type == "bike";
+            }))
     }
 
     getCars() : any[] {
@@ -54,8 +59,11 @@ export class VehicleService{
             name : name,
             desc : desc
         });
-
+        this.isChanged = true;
         console.log(this.vehicles);
+    }
+    isDataChanged(): boolean {
+        return this.isChanged;
     }
 
 }

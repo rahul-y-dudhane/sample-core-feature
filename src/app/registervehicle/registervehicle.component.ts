@@ -35,6 +35,8 @@ export class RegistervehicleComponent implements OnInit {
     this.vehicleForm.get('type').value,
     this.vehicleForm.get('desc').value);
 
+    this.vehicleForm.reset();
+
   }
   
   

@@ -9,7 +9,7 @@ import { VehicleService } from '../services/vehicle-list.service';
 export class ScootyComponent implements OnInit {
 
   scooties = [];
-
+  titleScooty = "Scotties";
   constructor(private vehicleService : VehicleService) {
     console.log("Scooty component");
 

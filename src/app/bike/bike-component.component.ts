@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { VehicleService } from '../services/vehicle-list.service';
 import { interval } from 'rxjs';
 
@@ -8,7 +8,9 @@ import { interval } from 'rxjs';
   styleUrls: ['./bike-component.component.css']
 })
 export class BikeComponentComponent implements OnInit {
-
+  
+  @Input() compTitle : string;
+  
   bikes = [];
   seconds = interval(1000);
 

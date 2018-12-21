@@ -1,4 +1,6 @@
+
 <ul>
+  <h3>{{compTitle}}</h3> <label class="label label-primary">Using @Input() </label>
   <li *ngFor="let bike of bikes">
       <span [routerLink]="[{ outlets: { infoOutlet: ['vehicle',bike.id] } }]" routerLinkActive="Active">
       <h4>

@@ -13,11 +13,15 @@ export class CarsComponent implements OnInit {
   constructor(private vehicleService : VehicleService) {
     console.log("Cars component");
       
-    this.cars = vehicleService.getCars();
-
-   }
-
+    
+  }
+  
   ngOnInit() {
+    this.vehicleService.vehicleSubject.subscribe(data => {
+      this.cars = data.filter(item =>{
+        return item.type == "car";
+      })
+    });
   }
 
 }

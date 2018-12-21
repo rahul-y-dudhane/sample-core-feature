@@ -22,14 +22,24 @@ export class BikeComponentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.seconds.subscribe(n => {
-      if(this.vehicleService.isDataChanged()){
+    // this.seconds.subscribe(n => {
+    //   if(this.vehicleService.isDataChanged()){
 
-        this.vehicleService.getBikes().subscribe( data =>{
-          this.bikes = data;
-        })
-      }
-      });
+    //     this.vehicleService.getBikes().subscribe( data =>{
+    //       this.bikes = data;
+    //     })
+    //   }
+    //   });
+
+
+
+      this.vehicleService.vehicleSubject.subscribe(data => {
+
+          this.bikes = data.filter(item =>{
+            return item.type == "bike";
+          })
+          console.log(this.bikes)
+         });
     }
  
 

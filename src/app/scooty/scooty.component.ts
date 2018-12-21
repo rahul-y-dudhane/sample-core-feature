@@ -14,11 +14,15 @@ export class ScootyComponent implements OnInit {
     console.log("Scooty component");
 
 
-    this.scooties = vehicleService.getScooties();
 
    }
 
   ngOnInit() {
+    this.vehicleService.vehicleSubject.subscribe(data => {
+      this.scooties = data.filter(item =>{
+        return item.type == "scooty";
+      })
+    });
   }
 
 }

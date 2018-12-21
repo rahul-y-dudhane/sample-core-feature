@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import { Vehicle } from '../vehicle';
-import { Observable , of, from } from 'rxjs';
+import { Observable , of, from, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class VehicleService{
@@ -21,30 +21,31 @@ export class VehicleService{
     { id: 12, type:"jeep", name:"Fortuner", desc:"You have selected Fortuner for details"},
     
     ];
-    
+       
+    vehicleSubject = new BehaviorSubject(this.vehicles);
 
-    getBikes() : Observable<Vehicle[]> {
+    // getBikes() : Observable<Vehicle[]> {
 
-            return of(this.vehicles.filter(item =>{
-                this.isChanged = false;
-                return item.type == "bike";
-            }))
-    }
+    //         return of(this.vehicles.filter(item =>{
+    //             this.isChanged = false;
+    //             return item.type == "bike";
+    //         }))
+    // }
 
-    getCars() : any[] {
-        return this.vehicles.filter(item =>{
-            return item.type == "car";
-        })    }
+    // getCars() : any[] {
+    //     return this.vehicles.filter(item =>{
+    //         return item.type == "car";
+    //     })    }
 
-    getJeeps() : any[] {
-        return this.vehicles.filter(item =>{
-            return item.type == "jeep";
-        })    }
+    // getJeeps() : any[] {
+    //     return this.vehicles.filter(item =>{
+    //         return item.type == "jeep";
+    //     })    }
 
-    getScooties() : any[] {
-        return this.vehicles.filter(item =>{
-            return item.type == "scooty";
-        })    }
+    // getScooties() : any[] {
+    //     return this.vehicles.filter(item =>{
+    //         return item.type == "scooty";
+    //     })    }
 
      getVehicleInfo(id :number) : any[] {
             return this.vehicles.filter(item =>{
@@ -59,8 +60,8 @@ export class VehicleService{
             name : name,
             desc : desc
         });
+        this.vehicleSubject.next(this.vehicles);
         this.isChanged = true;
-        console.log(this.vehicles);
     }
     isDataChanged(): boolean {
         return this.isChanged;

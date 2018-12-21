@@ -13,10 +13,15 @@ export class JeepsComponent implements OnInit {
   constructor(private vehicleService : VehicleService) {
     console.log("Jeeps component");
 
-            this.jeeps = vehicleService.getJeeps();
+           
       }
 
   ngOnInit() {
+    this.vehicleService.vehicleSubject.subscribe(data => {
+      this.jeeps = data.filter(item =>{
+        return item.type == "jeep";
+      })
+    });
   }
 
 }

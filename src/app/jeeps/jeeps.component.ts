@@ -17,7 +17,7 @@ export class JeepsComponent implements OnInit {
       }
 
   ngOnInit() {
-    this.vehicleService.vehicleSubject.subscribe(data => {
+    this.vehicleService.vehicleBehaviorSubject.subscribe(data => {
       this.jeeps = data.filter(item =>{
         return item.type == "jeep";
       })

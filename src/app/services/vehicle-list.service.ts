@@ -22,7 +22,7 @@ export class VehicleService{
     
     ];
        
-    vehicleSubject = new BehaviorSubject(this.vehicles);
+    vehicleBehaviorSubject = new BehaviorSubject(this.vehicles);
 
     // getBikes() : Observable<Vehicle[]> {
 
@@ -60,7 +60,7 @@ export class VehicleService{
             name : name,
             desc : desc
         });
-        this.vehicleSubject.next(this.vehicles);
+        this.vehicleBehaviorSubject.next(this.vehicles);
         this.isChanged = true;
     }
     isDataChanged(): boolean {

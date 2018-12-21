@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewChecked, OnDestroy, OnChanges } from '@angular/core';
 import { slideInAnimation } from './animations';
 import { RouterOutlet } from '@angular/router';
 import {interval} from 'rxjs';
@@ -10,13 +10,18 @@ import { ScootyComponent } from './scooty/scooty.component';
   styleUrls: ['./app.component.css'],
   animations:[slideInAnimation]
 })
-export class AppComponent implements OnInit,AfterViewInit {
+export class AppComponent implements OnInit,AfterViewInit,OnChanges,DoCheck,AfterContentInit,
+                                      AfterContentChecked,AfterViewChecked {
 
-  @ViewChild(ScootyComponent) scootyComponent;
+  @ViewChild(ScootyComponent) scootyComponent : ScootyComponent;
+
  
   title = 'sample-core-features';
   titleBike = "Bikes";
   titleScooty :string;
+
+  likes = 0;
+  dislikes = 0;
 
 
    seconds = interval(1000);
@@ -24,6 +29,11 @@ export class AppComponent implements OnInit,AfterViewInit {
     h = 0;
     m = 0;
     s = 0;
+  
+    ngOnChanges(){
+      console.log("In OnChanges of app component");
+
+    }
 
    ngOnInit(){
     
@@ -34,8 +44,29 @@ export class AppComponent implements OnInit,AfterViewInit {
       })
    }
 
+   ngDoCheck(){
+    console.log("In OnDoCheck of app component");
+   }
+
+   ngAfterContentInit(){
+    console.log("In ngAfterContentInit of app component");
+
+   }
+
+   ngAfterContentChecked(){
+    console.log("In ngAfterContentChecked of app component");
+
+   }
+
    ngAfterViewInit(){
      this.titleScooty = this.scootyComponent.titleScooty;
+     console.log("In ngAfterViewInit of app component");
+
+       }
+
+       ngAfterViewChecked(){
+        console.log("In ngAfterViewChecked of app component");
+
        }
 
 
@@ -43,5 +74,11 @@ export class AppComponent implements OnInit,AfterViewInit {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
+  onLike(){
+    this.likes++;
+  }
+  onDislike(){
+    this.dislikes++;
+  }
 
 }

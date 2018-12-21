@@ -18,7 +18,7 @@ export class ScootyComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.vehicleService.vehicleSubject.subscribe(data => {
+    this.vehicleService.vehicleBehaviorSubject.subscribe(data => {
       this.scooties = data.filter(item =>{
         return item.type == "scooty";
       })

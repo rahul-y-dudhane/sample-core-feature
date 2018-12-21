@@ -35,7 +35,7 @@ export class BikeComponentComponent implements OnInit {
 
 
 
-      this.vehicleService.vehicleSubject.subscribe(data => {
+      this.vehicleService.vehicleBehaviorSubject.subscribe(data => {
 
           this.bikes = data.filter(item =>{
             return item.type == "bike";

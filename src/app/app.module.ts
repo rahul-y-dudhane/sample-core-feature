@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { RegistervehicleComponent } from './registervehicle/registervehicle.component';
 import { AppRouterModule } from './app-router/app-router.module';
 import { HomeComponent } from './home/home.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistervehicleComponent,
-    HomeComponent
+    HomeComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,AppRouterModule, BrowserAnimationsModule,TwoWheelerModule, FourWheelModule,ReactiveFormsModule
